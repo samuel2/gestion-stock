@@ -7,10 +7,8 @@ package com.cami.persistence.model;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
@@ -47,17 +45,14 @@ public class LigneOperation extends EntityObject implements Serializable {
     @ManyToOne(targetEntity = Lot.class)
     private Lot lot;
 
-    @OneToMany(mappedBy = "ligneOperation")
-    private List<Fourniture> fournitures;
+    @ManyToOne
+    private Entree entree;
 
-    @OneToMany(mappedBy = "ligneOperation")
-    private List<Entree> entrees;
+    @ManyToOne
+    private Sortie sortie;
 
-    @OneToMany(mappedBy = "ligneOperation")
-    private List<Sortie> sorties;
-
-    @OneToMany(mappedBy = "ligneOperation")
-    private List<Audi> audis;
+    @ManyToOne
+    private Audit audi;
 
     public LigneOperation() {
     }
@@ -110,36 +105,28 @@ public class LigneOperation extends EntityObject implements Serializable {
         this.ecartValeur = ecartValeur;
     }
 
-    public List<Fourniture> getFournitures() {
-        return fournitures;
+    public Entree getEntree() {
+        return entree;
     }
 
-    public void setFournitures(List<Fourniture> fournitures) {
-        this.fournitures = fournitures;
+    public void setEntree(Entree entree) {
+        this.entree = entree;
     }
 
-    public List<Entree> getEntrees() {
-        return entrees;
+    public Sortie getSortie() {
+        return sortie;
     }
 
-    public void setEntrees(List<Entree> entrees) {
-        this.entrees = entrees;
+    public void setSortie(Sortie sortie) {
+        this.sortie = sortie;
     }
 
-    public List<Sortie> getSorties() {
-        return sorties;
+    public Audit getAudi() {
+        return audi;
     }
 
-    public void setSorties(List<Sortie> sorties) {
-        this.sorties = sorties;
-    }
-
-    public List<Audi> getAudis() {
-        return audis;
-    }
-
-    public void setAudis(List<Audi> audis) {
-        this.audis = audis;
+    public void setAudi(Audit audi) {
+        this.audi = audi;
     }
 
     public Lot getLot() {

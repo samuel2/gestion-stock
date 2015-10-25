@@ -17,19 +17,19 @@ import javax.persistence.OneToMany;
  * @author samuel
  */
 @Entity
-@DiscriminatorValue("Audi")
-public class Audi extends Operation implements Serializable {
+@DiscriminatorValue("Audit")
+public class Audit extends Operation implements Serializable {
 
-    @ManyToOne
+    @ManyToOne(targetEntity = Service.class)
     private Service service;
 
-    @ManyToOne
-    private LigneOperation ligneOperation;
+    @OneToMany(mappedBy = "audit")
+    private List<LigneOperation> ligneOperations;
 
-    @OneToMany(mappedBy = "audi")
-    private List<Lot> lots;
+    @ManyToOne(targetEntity = User.class)
+    private User user;
 
-    public Audi() {
+    public Audit() {
     }
 
     public Service getService() {
@@ -40,20 +40,20 @@ public class Audi extends Operation implements Serializable {
         this.service = service;
     }
 
-    public LigneOperation getLigneOperation() {
-        return ligneOperation;
+    public List<LigneOperation> getLigneOperations() {
+        return ligneOperations;
     }
 
-    public void setLigneOperation(LigneOperation ligneOperation) {
-        this.ligneOperation = ligneOperation;
+    public void setLigneOperations(List<LigneOperation> ligneOperations) {
+        this.ligneOperations = ligneOperations;
     }
 
-    public List<Lot> getLots() {
-        return lots;
+    public User getUser() {
+        return user;
     }
 
-    public void setLots(List<Lot> lots) {
-        this.lots = lots;
+    public void setUser(User user) {
+        this.user = user;
     }
 
 }

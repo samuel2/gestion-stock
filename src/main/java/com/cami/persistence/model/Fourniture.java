@@ -38,9 +38,6 @@ public class Fourniture extends EntityObject implements Serializable {
     @OneToMany(mappedBy = "fourniture")
     private List<Lot> lots;
 
-    @ManyToOne(targetEntity = LigneOperation.class)
-    private LigneOperation ligneOperation;
-
     @ManyToOne(targetEntity = Categorie.class)
     private Categorie categorie;
 
@@ -93,14 +90,6 @@ public class Fourniture extends EntityObject implements Serializable {
 
     public void setLots(List<Lot> lots) {
         this.lots = lots;
-    }
-
-    public LigneOperation getLigneOperation() {
-        return ligneOperation;
-    }
-
-    public void setLigneOperation(LigneOperation ligneOperation) {
-        this.ligneOperation = ligneOperation;
     }
 
     public Categorie getCategorie() {

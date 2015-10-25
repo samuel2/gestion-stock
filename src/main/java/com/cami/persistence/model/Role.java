@@ -6,7 +6,9 @@
 package com.cami.persistence.model;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import org.hibernate.validator.constraints.NotBlank;
 
 /**
@@ -19,6 +21,9 @@ public class Role extends EntityObject implements Serializable {
     @NotBlank
     private String intitule;
 
+    @OneToMany(mappedBy = "role")
+    private List<User> users;
+
     public Role() {
     }
 
@@ -28,6 +33,14 @@ public class Role extends EntityObject implements Serializable {
 
     public void setIntitule(String intitule) {
         this.intitule = intitule;
+    }
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
     }
 
 }

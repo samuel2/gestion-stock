@@ -23,11 +23,11 @@ public class Entree extends Operation implements Serializable {
     @ManyToOne(targetEntity = Service.class)
     private Service service;
 
-    @ManyToOne(targetEntity = LigneOperation.class)
-    private LigneOperation ligneOperation;
-
     @OneToMany(mappedBy = "entree")
-    private List<Lot> lots;
+    private List<LigneOperation> ligneOperations;
+
+    @ManyToOne(targetEntity = User.class)
+    private User user;
 
     public Entree() {
     }
@@ -40,20 +40,20 @@ public class Entree extends Operation implements Serializable {
         this.service = service;
     }
 
-    public LigneOperation getLigneOperation() {
-        return ligneOperation;
+    public List<LigneOperation> getLigneOperations() {
+        return ligneOperations;
     }
 
-    public void setLigneOperation(LigneOperation ligneOperation) {
-        this.ligneOperation = ligneOperation;
+    public void setLigneOperations(List<LigneOperation> ligneOperations) {
+        this.ligneOperations = ligneOperations;
     }
 
-    public List<Lot> getLots() {
-        return lots;
+    public User getUser() {
+        return user;
     }
 
-    public void setLots(List<Lot> lots) {
-        this.lots = lots;
+    public void setUser(User user) {
+        this.user = user;
     }
 
 }

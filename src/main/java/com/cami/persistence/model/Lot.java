@@ -50,15 +50,6 @@ public class Lot extends EntityObject implements Serializable {
     @OneToMany(mappedBy = "lot")
     private List<LigneOperation> ligneOperations;
 
-    @ManyToOne
-    private Entree entree;
-
-    @ManyToOne
-    private Sortie sortie;
-
-    @ManyToOne
-    private Audi audi;
-
     public Lot() {
     }
 
@@ -116,30 +107,6 @@ public class Lot extends EntityObject implements Serializable {
 
     public void setTotalMontant(float totalMontant) {
         this.totalMontant = totalMontant;
-    }
-
-    public Entree getEntree() {
-        return entree;
-    }
-
-    public void setEntree(Entree entree) {
-        this.entree = entree;
-    }
-
-    public Sortie getSortie() {
-        return sortie;
-    }
-
-    public void setSortie(Sortie sortie) {
-        this.sortie = sortie;
-    }
-
-    public Audi getAudi() {
-        return audi;
-    }
-
-    public void setAudi(Audi audi) {
-        this.audi = audi;
     }
 
     public List<LigneOperation> getLigneOperations() {

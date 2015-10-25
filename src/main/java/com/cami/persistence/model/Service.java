@@ -35,7 +35,7 @@ public class Service extends EntityObject implements Serializable {
     private List<Sortie> sorties;
 
     @OneToMany(mappedBy = "service")
-    private List<Audi> audis;
+    private List<Audit> audis;
 
     public Service() {
     }
@@ -80,11 +80,11 @@ public class Service extends EntityObject implements Serializable {
         this.sorties = sorties;
     }
 
-    public List<Audi> getAudis() {
+    public List<Audit> getAudis() {
         return audis;
     }
 
-    public void setAudis(List<Audi> audis) {
+    public void setAudis(List<Audit> audis) {
         this.audis = audis;
     }
 
