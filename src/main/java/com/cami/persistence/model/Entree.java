@@ -5,7 +5,6 @@
  */
 package com.cami.persistence.model;
 
-import java.io.Serializable;
 import java.util.List;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -18,7 +17,7 @@ import javax.persistence.OneToMany;
  */
 @Entity
 @DiscriminatorValue("Entree")
-public class Entree extends Operation implements Serializable {
+public class Entree extends Operation {
 
     @ManyToOne(targetEntity = Service.class)
     private Service service;

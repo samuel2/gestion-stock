@@ -5,7 +5,6 @@
  */
 package com.cami.persistence.model;
 
-import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -20,7 +19,7 @@ import org.springframework.format.annotation.DateTimeFormat;
  * @author samuel
  */
 @Entity
-public class LigneOperation extends EntityObject implements Serializable {
+public class LigneOperation extends EntityObject {
 
     @NotBlank
     private String numero;

@@ -5,7 +5,6 @@
  */
 package com.cami.persistence.model;
 
-import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
@@ -24,7 +23,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Entity
 @DiscriminatorColumn(name = "disc", discriminatorType = DiscriminatorType.STRING)
 @DiscriminatorValue("Operation")
-public abstract class Operation extends EntityObject implements Serializable {
+public abstract class Operation extends EntityObject {
 
     @NotBlank
     protected Long numero;

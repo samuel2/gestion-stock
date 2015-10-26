@@ -5,7 +5,6 @@
  */
 package com.cami.persistence.model;
 
-import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -17,7 +16,7 @@ import org.hibernate.validator.constraints.NotBlank;
  * @author samuel
  */
 @Entity
-public class User extends EntityObject implements Serializable {
+public class User extends EntityObject {
 
     @NotBlank
     private String nom;

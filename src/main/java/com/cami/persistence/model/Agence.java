@@ -5,7 +5,6 @@
  */
 package com.cami.persistence.model;
 
-import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -16,7 +15,7 @@ import org.hibernate.validator.constraints.NotBlank;
  * @author samuel
  */
 @Entity
-public class Agence extends EntityObject implements Serializable {
+public class Agence extends EntityObject {
 
     @NotBlank
     private String code;
