@@ -14,7 +14,7 @@ import org.hibernate.validator.constraints.NotBlank;
 
 /**
  *
- * @author samuel
+ * @author samuel   < smlfolong@gmail.com >
  */
 @Entity
 public class Fourniture extends EntityObject {

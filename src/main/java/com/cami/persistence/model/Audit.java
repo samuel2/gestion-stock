@@ -11,7 +11,7 @@ import javax.persistence.ManyToOne;
 
 /**
  *
- * @author samuel
+ * @author samuel   < smlfolong@gmail.com >
  */
 @Entity
 @DiscriminatorValue("Audit")

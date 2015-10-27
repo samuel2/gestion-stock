@@ -18,7 +18,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  *
- * @author samuel
+ * @author samuel   < smlfolong@gmail.com >
  */
 @Entity
 @DiscriminatorColumn(name = "disc", discriminatorType = DiscriminatorType.STRING)
