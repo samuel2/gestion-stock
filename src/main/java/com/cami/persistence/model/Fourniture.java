@@ -31,9 +31,6 @@ public class Fourniture extends EntityObject {
     @NotNull
     private int seuil;
 
-    @NotBlank
-    private String devise;
-
     @OneToMany(mappedBy = "fourniture")
     private List<Lot> lots;
 
@@ -73,14 +70,6 @@ public class Fourniture extends EntityObject {
 
     public void setSeuil(int seuil) {
         this.seuil = seuil;
-    }
-
-    public String getDevise() {
-        return devise;
-    }
-
-    public void setDevise(String devise) {
-        this.devise = devise;
     }
 
     public List<Lot> getLots() {

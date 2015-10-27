@@ -7,6 +7,7 @@ package com.cami.persistence.model;
 
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import org.hibernate.validator.constraints.NotBlank;
@@ -38,6 +39,9 @@ public class User extends EntityObject {
 
     @ManyToOne(targetEntity = Role.class)
     private Role role;
+
+    @ManyToMany
+    private List<Categorie> categories;
 
     public User() {
     }
@@ -104,6 +108,14 @@ public class User extends EntityObject {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public List<Categorie> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<Categorie> categories) {
+        this.categories = categories;
     }
 
 }

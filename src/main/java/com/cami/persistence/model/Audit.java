@@ -5,11 +5,9 @@
  */
 package com.cami.persistence.model;
 
-import java.util.List;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 /**
  *
@@ -21,9 +19,6 @@ public class Audit extends Operation {
 
     @ManyToOne(targetEntity = Service.class)
     private Service service;
-
-    @OneToMany(mappedBy = "audit")
-    private List<LigneOperation> ligneOperations;
 
     @ManyToOne(targetEntity = User.class)
     private User user;
@@ -37,14 +32,6 @@ public class Audit extends Operation {
 
     public void setService(Service service) {
         this.service = service;
-    }
-
-    public List<LigneOperation> getLigneOperations() {
-        return ligneOperations;
-    }
-
-    public void setLigneOperations(List<LigneOperation> ligneOperations) {
-        this.ligneOperations = ligneOperations;
     }
 
     public User getUser() {

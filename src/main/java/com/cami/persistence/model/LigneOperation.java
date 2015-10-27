@@ -45,9 +45,6 @@ public class LigneOperation extends EntityObject {
     private Lot lot;
 
     @ManyToOne
-    private Entree entree;
-
-    @ManyToOne
     private Sortie sortie;
 
     @ManyToOne
@@ -102,14 +99,6 @@ public class LigneOperation extends EntityObject {
 
     public void setEcartValeur(int ecartValeur) {
         this.ecartValeur = ecartValeur;
-    }
-
-    public Entree getEntree() {
-        return entree;
-    }
-
-    public void setEntree(Entree entree) {
-        this.entree = entree;
     }
 
     public Sortie getSortie() {

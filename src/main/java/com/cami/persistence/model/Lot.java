@@ -43,6 +43,12 @@ public class Lot extends EntityObject {
     @NotBlank
     private float totalMontant;
 
+    @NotBlank
+    private String etat;
+
+    @ManyToOne
+    private Entree entrees;
+
     @ManyToOne
     private Fourniture fourniture;
 
@@ -114,6 +120,22 @@ public class Lot extends EntityObject {
 
     public void setLigneOperations(List<LigneOperation> ligneOperations) {
         this.ligneOperations = ligneOperations;
+    }
+
+    public String getEtat() {
+        return etat;
+    }
+
+    public void setEtat(String etat) {
+        this.etat = etat;
+    }
+
+    public Entree getEntrees() {
+        return entrees;
+    }
+
+    public void setEntrees(Entree entrees) {
+        this.entrees = entrees;
     }
 
 }
