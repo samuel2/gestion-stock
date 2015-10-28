@@ -11,7 +11,7 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 
 /**
  *
- * @author samuel
+ * @author samuel   < smlfolong@gmail.com >
  */
 public class SpringMvcInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
