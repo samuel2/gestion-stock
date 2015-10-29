@@ -5,7 +5,7 @@
  */
 package com.cami.persistence.dao;
 
-import com.cami.persistence.model.Service;
+import com.cami.persistence.model.Departement;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
@@ -16,11 +16,11 @@ import org.springframework.data.repository.query.Param;
  *
  * @author samuel   < smlfolong@gmail.com >
  */
-public interface IServiceDao extends JpaRepository<Service, Long>, JpaSpecificationExecutor<Service> {
+public interface IDepartementDao extends JpaRepository<Departement, Long>, JpaSpecificationExecutor<Departement> {
 
-    @Query("SELECT * FROM Service s WHERE s.code LIKE :code OR s.intitule LIKE :intitule")
-    List<Service> searchServices(@Param("code") String code, @Param("intitule") String intitule);
+    @Query("SELECT d FROM Departement d WHERE d.code LIKE :code AND d.intitule LIKE :intitule")
+    List<Departement> searchDepartements(@Param("code") String code, @Param("intitule") String intitule);
 
-    @Query("SELECT * FROM Service s WHERE s.agence.id = :agenceId")
-    List<Service> filterByAgenceId(@Param("agenceId") long agenceId);
+    @Query("SELECT d FROM Departement d WHERE d.agence.id = :agenceId")
+    List<Departement> filterDepartementByAgenceId(@Param("agenceId") long agenceId);
 }

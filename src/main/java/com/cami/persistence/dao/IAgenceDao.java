@@ -18,7 +18,7 @@ import org.springframework.data.repository.query.Param;
  */
 public interface IAgenceDao extends JpaRepository<Agence, Long>, JpaSpecificationExecutor<Agence> {
 
-    @Query("SELECT * FROM Agence a WHERE a.code LIKE :code OR a.intitule LIKE :intitule OR a.region LIKE :region")
+    @Query("SELECT a FROM Agence a WHERE a.code LIKE :code OR a.intitule LIKE :intitule OR a.region LIKE :region")
     List<Agence> searchAgences(@Param("code") String code, @Param("intitule") String intitule, @Param("region") String region);
 
 }

@@ -16,7 +16,7 @@ import org.hibernate.validator.constraints.NotBlank;
  * @author samuel   < smlfolong@gmail.com >
  */
 @Entity
-public class Service extends EntityObject {
+public class Departement extends EntityObject {
 
     @NotBlank
     private String code;
@@ -27,16 +27,16 @@ public class Service extends EntityObject {
     @ManyToOne
     private Agence agence;
 
-    @OneToMany(mappedBy = "service")
+    @OneToMany(mappedBy = "departement")
     private List<Entree> entrees;
 
-    @OneToMany(mappedBy = "service")
+    @OneToMany(mappedBy = "departement")
     private List<Sortie> sorties;
 
-    @OneToMany(mappedBy = "service")
+    @OneToMany(mappedBy = "departement")
     private List<Audit> audis;
 
-    public Service() {
+    public Departement() {
     }
 
     public String getCode() {

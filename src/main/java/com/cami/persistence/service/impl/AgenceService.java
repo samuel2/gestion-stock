@@ -12,13 +12,13 @@ import com.cami.persistence.service.common.AbstractService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.PagingAndSortingRepository;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author samuel   < smlfolong@gmail.com >
  */
-@Transactional
+@Service("agenceService")
 public class AgenceService extends AbstractService<Agence> implements IAgenceService {
 
     @Autowired
