@@ -89,14 +89,14 @@ public class AgenceController {
         }
     }
 
-    @RequestMapping(value = "/delete", method = RequestMethod.POST)
+    @RequestMapping(value = "/{id}/delete", method = RequestMethod.POST)
     public String deleteAction(final Agence agence) {
         final Agence agenceToDisable = iAgenceService.findOne(agence.getId());
-        iAgenceService.disableEntity(agenceToDisable);
+        iAgenceService.delete(agenceToDisable);
         return "redirect:/agence/";
     }
 
-    @RequestMapping(value = "{id}/edit", method = RequestMethod.GET)
+    @RequestMapping(value = "/{id}/edit", method = RequestMethod.GET)
     public String editAction(@PathVariable("id") final Long id, final ModelMap model) {
         final Agence agence = iAgenceService.findOne(id);
         model.addAttribute("agence", agence);

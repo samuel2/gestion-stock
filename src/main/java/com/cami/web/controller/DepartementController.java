@@ -5,14 +5,20 @@
  */
 package com.cami.web.controller;
 
+import com.cami.persistence.model.Agence;
 import com.cami.persistence.model.Departement;
+import com.cami.persistence.service.IAgenceService;
 import com.cami.persistence.service.IDepartementService;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -30,7 +36,10 @@ public class DepartementController {
     @Autowired
     private IDepartementService iDepartementService;
 
-    @RequestMapping(value = "{id}/show", method = RequestMethod.GET)
+    @Autowired
+    private IAgenceService iAgenceService;
+
+    @RequestMapping(value = "/{id}/show", method = RequestMethod.GET)
     public String showAction(@PathVariable("id") final Long id, final ModelMap model) {
 
         final Departement departement = iDepartementService.findOne(id);
@@ -45,17 +54,17 @@ public class DepartementController {
         return "departement/new";
     }
 
-    @RequestMapping(value = "{id}/edit", method = RequestMethod.GET)
+    @RequestMapping(value = "/{id}/edit", method = RequestMethod.GET)
     public String editAction(@PathVariable("id") final Long id, final ModelMap model) {
         final Departement departement = iDepartementService.findOne(id);
         model.addAttribute("departement", departement);
         return "departement/edit";
     }
 
-    @RequestMapping(value = "/delete", method = RequestMethod.POST)
+    @RequestMapping(value = "/{id}/delete", method = RequestMethod.POST)
     public String deleteAction(final Departement departement, final ModelMap model) {
         Departement departementToDisable = iDepartementService.findOne(departement.getId());
-        iDepartementService.disableEntity(departementToDisable);
+        iDepartementService.delete(departementToDisable);
         return "redirect:/departement";
     }
 
@@ -82,7 +91,7 @@ public class DepartementController {
         model.addAttribute("page", page);
         model.addAttribute("Totalpage", resultPage.getTotalPages());
         model.addAttribute("size", size);
-        model.addAttribute("services", resultPage.getContent());
+        model.addAttribute("departements", resultPage.getContent());
 
         return "departement/index";
     }
@@ -112,5 +121,19 @@ public class DepartementController {
             iDepartementService.update(departement);
             return "redirect:/departement/" + departement.getId() + "/show";
         }
+    }
+
+    @ModelAttribute("listAgence")
+    public Map<Long, String> populateAgenceFile() {
+
+        final Map<Long, String> map = new HashMap<>();
+
+        final List<Agence> agences = iAgenceService.findAll();
+
+        for (Agence agence : agences) {
+            map.put(agence.getId(), agence.getIntitule());
+        }
+
+        return map;
     }
 }

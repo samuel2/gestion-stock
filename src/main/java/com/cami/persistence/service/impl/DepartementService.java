@@ -5,6 +5,7 @@
  */
 package com.cami.persistence.service.impl;
 
+import com.cami.persistence.dao.IAgenceDao;
 import com.cami.persistence.dao.IDepartementDao;
 import com.cami.persistence.model.Departement;
 import com.cami.persistence.service.IDepartementService;
@@ -24,8 +25,46 @@ public class DepartementService extends AbstractService<Departement> implements 
     @Autowired
     private IDepartementDao iDepartementDao;
 
+    @Autowired
+    private IAgenceDao iAgenceDao;
+
     public DepartementService() {
         super();
+    }
+
+    @Override
+    public Departement create(Departement entity) {
+        entity.setAgence(iAgenceDao.findOne(entity.getAgence().getId()));
+        return iDepartementDao.save(entity);
+    }
+
+    @Override
+    public Departement update(Departement entity) {
+        Departement dept = iDepartementDao.findOne(entity.getId());
+        dept.setCode(entity.getCode());
+        dept.setIntitule(entity.getIntitule());
+        dept.setAgence(iAgenceDao.findOne(entity.getAgence().getId()));
+        return iDepartementDao.save(dept);
+    }
+
+    @Override
+    public void delete(Departement entity) {
+        iDepartementDao.delete(entity);
+    }
+
+    @Override
+    public void deleteById(long entityId) {
+        iDepartementDao.delete(entityId);
+    }
+
+    @Override
+    public Departement findOne(long id) {
+        return iDepartementDao.findOne(id);
+    }
+
+    @Override
+    public List<Departement> findAll() {
+        return iDepartementDao.findAll();
     }
 
     @Override

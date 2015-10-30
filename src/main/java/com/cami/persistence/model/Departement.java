@@ -34,7 +34,7 @@ public class Departement extends EntityObject {
     private List<Sortie> sorties;
 
     @OneToMany(mappedBy = "departement")
-    private List<Audit> audis;
+    private List<Audit> audits;
 
     public Departement() {
     }
@@ -79,12 +79,12 @@ public class Departement extends EntityObject {
         this.sorties = sorties;
     }
 
-    public List<Audit> getAudis() {
-        return audis;
+    public List<Audit> getAudits() {
+        return audits;
     }
 
-    public void setAudis(List<Audit> audis) {
-        this.audis = audis;
+    public void setAudits(List<Audit> audits) {
+        this.audits = audits;
     }
 
 }
