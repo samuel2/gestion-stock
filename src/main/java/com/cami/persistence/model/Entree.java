@@ -17,8 +17,8 @@ import javax.persistence.ManyToOne;
 @DiscriminatorValue("Entree")
 public class Entree extends Operation {
 
-    @ManyToOne(targetEntity = Service.class)
-    private Service service;
+    @ManyToOne(targetEntity = Departement.class)
+    private Departement departement;
 
     @ManyToOne(targetEntity = User.class)
     private User user;
@@ -26,12 +26,12 @@ public class Entree extends Operation {
     public Entree() {
     }
 
-    public Service getService() {
-        return service;
+    public Departement getDepartement() {
+        return departement;
     }
 
-    public void setService(Service service) {
-        this.service = service;
+    public void setDepartement(Departement departement) {
+        this.departement = departement;
     }
 
     public User getUser() {

@@ -9,16 +9,17 @@ import com.cami.persistence.dao.IAgenceDao;
 import com.cami.persistence.model.Agence;
 import com.cami.persistence.service.IAgenceService;
 import com.cami.persistence.service.common.AbstractService;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.repository.PagingAndSortingRepository;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author samuel   < smlfolong@gmail.com >
  */
-@Transactional
+@Service("agenceService")
 public class AgenceService extends AbstractService<Agence> implements IAgenceService {
 
     @Autowired
@@ -34,6 +35,30 @@ public class AgenceService extends AbstractService<Agence> implements IAgenceSer
     }
 
     @Override
+    public Agence create(Agence entity) {
+        return iAgenceDao.save(entity);
+    }
+
+    @Override
+    public Agence update(Agence entity) {
+        Agence agence = iAgenceDao.findOne(entity.getId());
+        agence.setCode(entity.getCode());
+        agence.setIntitule(entity.getIntitule());
+        agence.setRegion(entity.getRegion());
+        return iAgenceDao.save(agence);
+    }
+
+    @Override
+    public void delete(Agence entity) {
+        iAgenceDao.delete(entity);
+    }
+
+    @Override
+    public void deleteById(long entityId) {
+        iAgenceDao.delete(entityId);
+    }
+
+    @Override
     public void disableEntity(Agence entity) {
 
         if (entity.isDeleted()) {
@@ -44,10 +69,8 @@ public class AgenceService extends AbstractService<Agence> implements IAgenceSer
     }
 
     @Override
-    public List<Agence> searchAgences(String code, String intitule, String region) {
-        List<Agence> agences;
-        agences = iAgenceDao.searchAgences(code, intitule, region);
-        return agences;
+    public Page<Agence> findPagineted(String code, String intitule, String region, boolean deleted, int nombrePage, Integer size) {
+        return iAgenceDao.searchAgencesSuivant('%' + code + '%', '%' + intitule + '%', '%' + region + '%', deleted, new PageRequest(nombrePage, size));
     }
 
 }

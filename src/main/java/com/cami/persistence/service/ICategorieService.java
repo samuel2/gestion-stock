@@ -6,14 +6,19 @@
 package com.cami.persistence.service;
 
 import com.cami.persistence.IOperations;
-import com.cami.persistence.model.Agence;
+import com.cami.persistence.model.Categorie;
+import java.util.List;
 import org.springframework.data.domain.Page;
 
 /**
  *
  * @author samuel   < smlfolong@gmail.com >
  */
-public interface IAgenceService extends IOperations<Agence> {
+public interface ICategorieService extends IOperations<Categorie> {
 
-    Page<Agence> findPagineted(String code, String intitule, String region, boolean deleted, int nombrePage, Integer size);
+    List<Categorie> retrieveByCategorie(String intitule);
+
+    Page<Categorie> findPaginated(String query, int i, Integer size);
+
+    Page<Categorie> findPaginated(String intitule, boolean deleted, int page, Integer size);
 }

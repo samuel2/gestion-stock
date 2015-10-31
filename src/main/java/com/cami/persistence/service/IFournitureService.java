@@ -6,14 +6,14 @@
 package com.cami.persistence.service;
 
 import com.cami.persistence.IOperations;
-import com.cami.persistence.model.Agence;
-import org.springframework.data.domain.Page;
+import com.cami.persistence.model.Fourniture;
+import java.util.List;
 
 /**
  *
  * @author samuel   < smlfolong@gmail.com >
  */
-public interface IAgenceService extends IOperations<Agence> {
+public interface IFournitureService extends IOperations<Fourniture> {
 
-    Page<Agence> findPagineted(String code, String intitule, String region, boolean deleted, int nombrePage, Integer size);
+    public List<Fourniture> searchFournitures(String reference, String designation, int quantite, int seuil);
 }

@@ -27,7 +27,7 @@ public class Agence extends EntityObject {
     private String region;
 
     @OneToMany(mappedBy = "agence")
-    private List<Service> services;
+    private List<Departement> departement;
 
     public Agence() {
     }
@@ -56,12 +56,12 @@ public class Agence extends EntityObject {
         this.region = region;
     }
 
-    public List<Service> getServices() {
-        return services;
+    public List<Departement> getDepartements() {
+        return departement;
     }
 
-    public void setServices(List<Service> services) {
-        this.services = services;
+    public void setDepartements(List<Departement> departements) {
+        this.departement = departements;
     }
 
 }

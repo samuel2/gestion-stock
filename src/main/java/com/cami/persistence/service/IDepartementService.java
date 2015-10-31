@@ -6,17 +6,18 @@
 package com.cami.persistence.service;
 
 import com.cami.persistence.IOperations;
-import com.cami.persistence.model.Service;
+import com.cami.persistence.model.Departement;
 import java.util.List;
+import org.springframework.data.domain.Page;
 
 /**
  *
  * @author samuel   < smlfolong@gmail.com >
  */
-public interface IServiceService extends IOperations<Service> {
+public interface IDepartementService extends IOperations<Departement> {
 
-    List<Service> searchServices(String code, String intitule);
+    Page<Departement> searchDepartements(String code, String intitule, boolean deleted, int nombrePage, Integer size);
 
-    List<Service> filterByAgenceId(long agenceId);
+    List<Departement> filterDepartementByAgenceId(long agenceId);
 
 }
