@@ -57,27 +57,27 @@
                             <span class="glyphicon glyphicon-new-window"></span>
                             <spring:message code="action.nouveau" />
                         </a>
+
+
+                        <div class="pull-right">
+                            <ul class="pager">
+
+                                <li><a href="?query=${query}&page=0&size=${size}" class ="btn btn-sm disabled">
+                                        <span class="glyphicon glyphicon-fast-backward"></span>
+                                    </a></li>
+                                <li><a href="?query=${query}&page=${page-1}&size=${size}"class ="btn btn-sm disabled">
+                                        <span class="glyphicon glyphicon-backward"></span>
+                                    </a></li>
+                                <li><input type="text" class="pager_detail text-center" readonly value="0/0"/></li>
+                                <li><a href="?query=${query}&page=${page+1}&size=${size}" class ="btn btn-sm disabled">
+                                        <span class="glyphicon glyphicon-forward"></span>
+                                    </a></li>
+                                <li><a href="?query=${query}&page=${Totalpage-1}&size=${size}" class ="btn btn-sm disabled">
+                                        <span class="glyphicon glyphicon-fast-forward"></span>
+                                    </a></li>
+                            </ul>
+                        </div>
                     </div>
-
-                    <div class="pull-right">
-                        <ul class="pager">
-
-                            <li><a href="?query=${query}&page=0&size=${size}" class ="btn btn-sm disabled">
-                                    <span class="glyphicon glyphicon-fast-backward"></span>
-                                </a></li>
-                            <li><a href="?query=${query}&page=${page-1}&size=${size}"class ="btn btn-sm disabled">
-                                    <span class="glyphicon glyphicon-backward"></span>
-                                </a></li>
-                            <li><input type="text" class="pager_detail text-center" readonly value="0/0"/></li>
-                            <li><a href="?query=${query}&page=${page+1}&size=${size}" class ="btn btn-sm disabled">
-                                    <span class="glyphicon glyphicon-forward"></span>
-                                </a></li>
-                            <li><a href="?query=${query}&page=${Totalpage-1}&size=${size}" class ="btn btn-sm disabled">
-                                    <span class="glyphicon glyphicon-fast-forward"></span>
-                                </a></li>
-                        </ul>
-                    </div>
-
 
                 </c:if>
 
@@ -104,48 +104,50 @@
                             </td>
                         </tr>
                     </c:forEach>
-                </c:if>
-                </tbody>
-                </table>
-                <div class="row">
-                    <a href="${agenceNew}" class="btn btn-primary btn-sm">
-                        <span class="glyphicon glyphicon-new-window"></span>
-                        <spring:message code="action.nouveau" />
-                    </a>
-                </div>
+
+                    </tbody>
+                    </table>
+                    <div class="row">
+                        <a href="${agenceNew}" class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-new-window"></span>
+                            <spring:message code="action.nouveau" />
+                        </a>
 
 
-                <div class="pull-right">
-                    <ul class="pager">
 
-                        <li>
-                            <a href="?page=0&size=${size}" <c:if test="${page eq 0}">class ="btn btn-sm disabled"</c:if>>
-                                    <span class="glyphicon glyphicon-fast-backward"></span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="?page=${page-1}&size=${size}" <c:if test="${page eq 0}">class ="btn btn-sm disabled"</c:if>>
-                                    <span class="glyphicon glyphicon-backward"></span>
-                                </a>
-                            </li>
-                            <li>
-                                <input type="text" class="pager_detail text-center" readonly value="${page+1}/${Totalpage}"/>
-                        </li>
-                        <li>
-                            <a href="?page=${page+1}&size=${size}" <c:if test="${page+1 eq Totalpage}">class ="btn btn-sm disabled"</c:if>>
-                                    <span class="glyphicon glyphicon-forward"></span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="?page=${Totalpage-1}&size=${size}" <c:if test="${page+1 eq Totalpage}">class ="btn btn-sm disabled"</c:if>>
-                                    <span class="glyphicon glyphicon-fast-forward"></span>
-                                </a>
-                            </li>
-                        </ul>
+                        <div class="pull-right">
+                            <ul class="pager">
+
+                                <li>
+                                    <a href="?page=0&size=${size}" <c:if test="${page eq 0}">class ="btn btn-sm disabled"</c:if>>
+                                            <span class="glyphicon glyphicon-fast-backward"></span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="?page=${page-1}&size=${size}" <c:if test="${page eq 0}">class ="btn btn-sm disabled"</c:if>>
+                                            <span class="glyphicon glyphicon-backward"></span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <input type="text" class="pager_detail text-center" readonly value="${page+1}/${Totalpage}"/>
+                                </li>
+                                <li>
+                                    <a href="?page=${page+1}&size=${size}" <c:if test="${page+1 eq Totalpage}">class ="btn btn-sm disabled"</c:if>>
+                                            <span class="glyphicon glyphicon-forward"></span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="?page=${Totalpage-1}&size=${size}" <c:if test="${page+1 eq Totalpage}">class ="btn btn-sm disabled"</c:if>>
+                                            <span class="glyphicon glyphicon-fast-forward"></span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
+            </c:if>
+        </div>
 
-                </div>
-            </div>
     </tiles:putAttribute>
 </tiles:insertDefinition>
 
