@@ -7,6 +7,7 @@ package com.cami.persistence.model;
 
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
@@ -16,7 +17,7 @@ import org.hibernate.validator.constraints.NotBlank;
 
 /**
  *
- * @author samuel
+ * @author samuel   < smlfolong@gmail.com >
  */
 @Entity
 public class User extends EntityObject
@@ -58,6 +59,9 @@ public class User extends EntityObject
 
     @ManyToOne(targetEntity = Role.class, optional = false)
     private Role role;
+
+    @ManyToMany
+    private List<Categorie> categories;
 
     public User()
     {
@@ -143,6 +147,12 @@ public class User extends EntityObject
         this.role = role;
     }
 
+    public List<Categorie> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<Categorie> categories) {
+        this.categories = categories;
     public String getPasswordConfirm()
     {
         return passwordConfirm;

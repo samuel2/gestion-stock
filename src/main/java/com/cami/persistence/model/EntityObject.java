@@ -14,7 +14,7 @@ import javax.persistence.Version;
 
 /**
  *
- * @author samuel
+ * @author samuel   < smlfolong@gmail.com >
  */
 @MappedSuperclass
 public abstract class EntityObject implements Serializable {
