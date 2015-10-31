@@ -7,6 +7,8 @@ package com.cami.persistence.dao;
 
 import com.cami.persistence.model.Departement;
 import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
@@ -18,8 +20,8 @@ import org.springframework.data.repository.query.Param;
  */
 public interface IDepartementDao extends JpaRepository<Departement, Long>, JpaSpecificationExecutor<Departement> {
 
-    @Query("SELECT d FROM Departement d WHERE d.code LIKE :code AND d.intitule LIKE :intitule")
-    List<Departement> searchDepartements(@Param("code") String code, @Param("intitule") String intitule);
+    @Query("SELECT d FROM Departement d WHERE d.code LIKE :code AND d.intitule LIKE :intitule AND d.deleted = :deleted")
+    Page<Departement> searchDepartements(@Param("code") String code, @Param("intitule") String intitule, @Param("deleted") boolean deleted, Pageable pageable);
 
     @Query("SELECT d FROM Departement d WHERE d.agence.id = :agenceId")
     List<Departement> filterDepartementByAgenceId(@Param("agenceId") long agenceId);

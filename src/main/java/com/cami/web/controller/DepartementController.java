@@ -77,12 +77,12 @@ public class DepartementController {
         final Integer page = webRequest.getParameter("page") != null ? Integer.valueOf(webRequest.getParameter("page")) : 0;
         final Integer size = webRequest.getParameter("size") != null ? Integer.valueOf(webRequest.getParameter("size")) : 55;
 
-        final Page<Departement> resultPage = iDepartementService.findPaginated(page, size);
-
         boolean deleted = false;
         if (webRequest.getParameter("querydeleted") != null) {
             deleted = webRequest.getParameter("querydeleted").equals("true");
         }
+
+        final Page<Departement> resultPage = iDepartementService.searchDepartements(code, intitule, deleted, page, size);
 
         final Departement departement = new Departement();
         departement.setCode(code);

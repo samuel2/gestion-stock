@@ -6,7 +6,6 @@
 package com.cami.persistence.dao;
 
 import com.cami.persistence.model.Agence;
-import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -19,9 +18,6 @@ import org.springframework.data.repository.query.Param;
  * @author samuel   < smlfolong@gmail.com >
  */
 public interface IAgenceDao extends JpaRepository<Agence, Long>, JpaSpecificationExecutor<Agence> {
-
-    @Query("SELECT a FROM Agence a WHERE a.code LIKE :code AND a.intitule LIKE :intitule AND a.region LIKE :region")
-    List<Agence> searchAgences(@Param("code") String code, @Param("intitule") String intitule, @Param("region") String region);
 
     @Query("SELECT a FROM Agence a WHERE a.code LIKE :code AND a.intitule LIKE :intitule AND a.region LIKE :region AND a.deleted = :deleted")
     Page<Agence> searchAgencesSuivant(@Param("code") String code, @Param("intitule") String intitule, @Param("region") String region, @Param("deleted") boolean deleted, Pageable pageable);

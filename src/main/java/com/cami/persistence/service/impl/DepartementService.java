@@ -12,6 +12,8 @@ import com.cami.persistence.service.IDepartementService;
 import com.cami.persistence.service.common.AbstractService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Service;
 
@@ -83,17 +85,15 @@ public class DepartementService extends AbstractService<Departement> implements 
     }
 
     @Override
-    public List<Departement> searchDepartements(String code, String intitule) {
-        List<Departement> services;
-        services = iDepartementDao.searchDepartements(code, intitule);
-        return services;
-    }
-
-    @Override
     public List<Departement> filterDepartementByAgenceId(long agenceId) {
         List<Departement> services;
         services = iDepartementDao.filterDepartementByAgenceId(agenceId);
         return services;
+    }
+
+    @Override
+    public Page<Departement> searchDepartements(String code, String intitule, boolean deleted, int nombrePage, Integer size) {
+        return iDepartementDao.searchDepartements('%' + code + '%', '%' + intitule + '%', deleted, new PageRequest(nombrePage, size));
     }
 
 }

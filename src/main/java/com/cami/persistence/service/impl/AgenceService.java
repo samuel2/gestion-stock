@@ -9,10 +9,9 @@ import com.cami.persistence.dao.IAgenceDao;
 import com.cami.persistence.model.Agence;
 import com.cami.persistence.service.IAgenceService;
 import com.cami.persistence.service.common.AbstractService;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Service;
 
@@ -70,15 +69,8 @@ public class AgenceService extends AbstractService<Agence> implements IAgenceSer
     }
 
     @Override
-    public List<Agence> searchAgences(String code, String intitule, String region) {
-        List<Agence> agences;
-        agences = iAgenceDao.searchAgences(code, intitule, region);
-        return agences;
-    }
-
-    @Override
-    public Page<Agence> findPagineted(String code, String intitule, String region, boolean deleted, Pageable pageable) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public Page<Agence> findPagineted(String code, String intitule, String region, boolean deleted, int nombrePage, Integer size) {
+        return iAgenceDao.searchAgencesSuivant('%' + code + '%', '%' + intitule + '%', '%' + region + '%', deleted, new PageRequest(nombrePage, size));
     }
 
 }

@@ -53,7 +53,7 @@ public class AgenceController {
             deleted = webRequest.getParameter("querydeleted").equals("true");
         }
 
-        final Page<Agence> resultPage = iAgenceService.findPaginated(page, size);
+        final Page<Agence> resultPage = iAgenceService.findPagineted(code, intitule, region, deleted, page, size);
 
         final Agence agence = new Agence();
         agence.setCode(code);

@@ -6,7 +6,7 @@
 package com.cami.persistence.service;
 
 import com.cami.persistence.IOperations;
-import com.cami.persistence.model.Departement;
+import com.cami.persistence.model.Categorie;
 import java.util.List;
 import org.springframework.data.domain.Page;
 
@@ -14,10 +14,11 @@ import org.springframework.data.domain.Page;
  *
  * @author samuel   < smlfolong@gmail.com >
  */
-public interface IDepartementService extends IOperations<Departement> {
+public interface ICategorieService extends IOperations<Categorie> {
 
-    Page<Departement> searchDepartements(String code, String intitule, boolean deleted, int nombrePage, Integer size);
+    List<Categorie> retrieveByCategorie(String intitule);
 
-    List<Departement> filterDepartementByAgenceId(long agenceId);
+    Page<Categorie> findPaginated(String query, int i, Integer size);
 
+    Page<Categorie> findPaginated(String intitule, boolean deleted, int page, Integer size);
 }
