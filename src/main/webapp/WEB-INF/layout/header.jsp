@@ -3,8 +3,9 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
-<spring:url value="/materiel/" htmlEscape="true" var="materiel_home" />
-<spring:url value="/appeloffre/" htmlEscape="true" var="fonction_home" />
+<spring:url value="/categorie/" htmlEscape="true" var="categorie_home" />
+<spring:url value="/service/" htmlEscape="true" var="service_home" />
+<spring:url value="/agence/" htmlEscape="true" var="agence_home" />
 <spring:url value="/" htmlEscape="true" var="home" />
 
 <nav class="row">

@@ -78,7 +78,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     public TilesConfigurer tilesConfigurer() {
         final TilesConfigurer tilesConfigurer = new TilesConfigurer();
         tilesConfigurer
-                .setDefinitions(new String[]{});
+                .setDefinitions(new String[]{"WEB-INF/tiles/tiles-definitions.xml"});
         tilesConfigurer.setCheckRefresh(true);
         return tilesConfigurer;
     }
@@ -113,7 +113,9 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     @Bean
     public ReloadableResourceBundleMessageSource messageSource() {
         final ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
-        messageSource.setBasenames(new String[]{});
+        messageSource.setBasenames(new String[]{"WEB-INF/messages/agence/messages",
+            "WEB-INF/messages/departement/messages",
+            "WEB-INF/messages/default/messages"});
         return messageSource;
     }
 
