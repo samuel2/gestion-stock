@@ -10,8 +10,9 @@ import com.cami.persistence.dao.IFournitureDao;
 import com.cami.persistence.model.Fourniture;
 import com.cami.persistence.service.IFournitureService;
 import com.cami.persistence.service.common.AbstractService;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Service;
 
@@ -71,8 +72,8 @@ public class FournitureService extends AbstractService<Fourniture> implements IF
     }
 
     @Override
-    public List<Fourniture> searchFournitures(String reference, String designation, int quantite, int seuil) {
-        return iFournitureDao.searchFournitures(reference, designation, quantite, seuil);
+    public Page<Fourniture> findPaginated(String reference, String designation, int quantite, int seuil, boolean deleted, int nombrePage, Integer size) {
+        return iFournitureDao.searchFournitures('%' + reference + '%', '%' + designation + '%', '%' + quantite + '%', '%' + seuil + '%', deleted, new PageRequest(nombrePage, size));
     }
 
 }

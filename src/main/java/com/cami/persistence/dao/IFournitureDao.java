@@ -6,7 +6,8 @@
 package com.cami.persistence.dao;
 
 import com.cami.persistence.model.Fourniture;
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
@@ -22,12 +23,15 @@ public interface IFournitureDao extends JpaRepository<Fourniture, Long>, JpaSpec
             + "f.reference LIKE :reference AND "
             + "f.designation LIKE :designation AND "
             + "f.quantite = :quantite AND "
-            + "f.seuil = :seuil"
+            + "f.seuil = :seuil AND "
+            + "f.deleted = :deleted"
     )
-    public List<Fourniture> searchFournitures(
+    public Page<Fourniture> searchFournitures(
             @Param("reference") String reference,
             @Param("designation") String designation,
             @Param("quantite") int quantite,
-            @Param("seuil") int seuil
+            @Param("seuil") int seuil,
+            @Param("deleted") boolean deleted,
+            Pageable pageable
     );
 }

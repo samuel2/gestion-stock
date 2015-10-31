@@ -7,7 +7,7 @@ package com.cami.persistence.service;
 
 import com.cami.persistence.IOperations;
 import com.cami.persistence.model.Fourniture;
-import java.util.List;
+import org.springframework.data.domain.Page;
 
 /**
  *
@@ -15,5 +15,5 @@ import java.util.List;
  */
 public interface IFournitureService extends IOperations<Fourniture> {
 
-    public List<Fourniture> searchFournitures(String reference, String designation, int quantite, int seuil);
+    public Page<Fourniture> findPaginated(String reference, String designation, int quantite, int seuil, boolean deleted, int nombrePage, Integer size);
 }
