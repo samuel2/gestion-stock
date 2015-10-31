@@ -5,9 +5,10 @@
  */
 package com.cami.persistence.model;
 
-import java.util.List;
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -16,38 +17,33 @@ import org.hibernate.validator.constraints.NotBlank;
  * @author samuel   < smlfolong@gmail.com >
  */
 @Entity
-public class Role extends EntityObject
-{
+public class Role extends EntityObject {
 
     @NotBlank(message = "{blank.message}")
     @Size(min = 4, max = 255, message = "{size.message}")
-    private String intitule;
+    private String role;
 
-    @OneToMany(mappedBy = "role")
-    private List<User> users;
+    @ManyToOne(targetEntity = User.class, optional = false, fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_username")
+    private User user;
 
-    public Role()
-    {
+    public Role() {
     }
 
-    public String getIntitule()
-    {
-        return intitule;
+    public String getRole() {
+        return role;
     }
 
-    public void setIntitule(String intitule)
-    {
-        this.intitule = intitule;
+    public void setRole(String role) {
+        this.role = role;
     }
 
-    public List<User> getUsers()
-    {
-        return users;
+    public User getUser() {
+        return user;
     }
 
-    public void setUsers(List<User> users)
-    {
-        this.users = users;
+    public void setUser(User user) {
+        this.user = user;
     }
 
 }

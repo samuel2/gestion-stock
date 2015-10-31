@@ -8,7 +8,6 @@ package com.cami.persistence.model;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 import javax.validation.constraints.Size;
@@ -20,8 +19,7 @@ import org.hibernate.validator.constraints.NotBlank;
  * @author samuel   < smlfolong@gmail.com >
  */
 @Entity
-public class User extends EntityObject
-{
+public class User extends EntityObject {
 
     @NotBlank(message = "{blank.message")
     @Size(min = 3, max = 100, message = "{size.message}")
@@ -37,7 +35,7 @@ public class User extends EntityObject
 
     @NotBlank(message = "{blank.message")
     @Size(min = 3, max = 25, message = "{size.message}")
-    private String login;
+    private String username;
 
     @NotBlank(message = "{blank.message")
     @Size(min = 5, max = 255, message = "{size.message}")
@@ -57,123 +55,89 @@ public class User extends EntityObject
     @OneToMany(mappedBy = "user")
     private List<Sortie> sorties;
 
-    @ManyToOne(targetEntity = Role.class, optional = false)
-    private Role role;
-
     @ManyToMany
     private List<Categorie> categories;
 
-    public User()
-    {
+    public User() {
     }
 
-    public String getNom()
-    {
+    public String getNom() {
         return nom;
     }
 
-    public void setNom(String nom)
-    {
+    public void setNom(String nom) {
         this.nom = nom;
     }
 
-    public String getPrenom()
-    {
+    public String getPrenom() {
         return prenom;
     }
 
-    public void setPrenom(String prenom)
-    {
+    public void setPrenom(String prenom) {
         this.prenom = prenom;
     }
 
-    public List<Audit> getAudis()
-    {
+    public List<Audit> getAudis() {
         return audis;
     }
 
-    public void setAudis(List<Audit> audis)
-    {
+    public void setAudis(List<Audit> audis) {
         this.audis = audis;
     }
 
-    public List<Entree> getEntrees()
-    {
+    public List<Entree> getEntrees() {
         return entrees;
     }
 
-    public void setEntrees(List<Entree> entrees)
-    {
+    public void setEntrees(List<Entree> entrees) {
         this.entrees = entrees;
     }
 
-    public List<Sortie> getSorties()
-    {
+    public List<Sortie> getSorties() {
         return sorties;
     }
 
-    public void setSorties(List<Sortie> sorties)
-    {
+    public void setSorties(List<Sortie> sorties) {
         this.sorties = sorties;
     }
 
-    public String getLogin()
-    {
-        return login;
+    public String getUsername() {
+        return username;
     }
 
-    public void setLogin(String login)
-    {
-        this.login = login;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getPassword()
-    {
+    public String getPassword() {
         return password;
     }
 
-    public void setPassword(String Password)
-    {
+    public void setPassword(String Password) {
         this.password = Password;
     }
 
-    public Role getRole()
-    {
-        return role;
-    }
-
-    public void setRole(Role role)
-    {
-        this.role = role;
-    }
-
-    public List<Categorie> getCategories()
-    {
+    public List<Categorie> getCategories() {
         return categories;
     }
 
-    public void setCategories(List<Categorie> categories)
-    {
+    public void setCategories(List<Categorie> categories) {
         this.categories = categories;
     }
 
-    public String getPasswordConfirm()
-    {
+    public String getPasswordConfirm() {
         return passwordConfirm;
     }
 
-    public void setPasswordConfirm(String passwordConfirm)
-    {
+    public void setPasswordConfirm(String passwordConfirm) {
         this.passwordConfirm = passwordConfirm;
     }
 
-    public String getEmail()
-    {
+    public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email)
-    {
+    public void setEmail(String email) {
         this.email = email;
     }
 
