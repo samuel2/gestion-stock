@@ -147,12 +147,16 @@ public class User extends EntityObject
         this.role = role;
     }
 
-    public List<Categorie> getCategories() {
+    public List<Categorie> getCategories()
+    {
         return categories;
     }
 
-    public void setCategories(List<Categorie> categories) {
+    public void setCategories(List<Categorie> categories)
+    {
         this.categories = categories;
+    }
+
     public String getPasswordConfirm()
     {
         return passwordConfirm;
