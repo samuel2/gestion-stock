@@ -5,7 +5,9 @@
  */
 package com.cami.persistence.dao;
 
+import com.cami.persistence.model.Categorie;
 import com.cami.persistence.model.Fourniture;
+import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -18,6 +20,9 @@ import org.springframework.data.repository.query.Param;
  * @author samuel   < smlfolong@gmail.com >
  */
 public interface IFournitureDao extends JpaRepository<Fourniture, Long>, JpaSpecificationExecutor<Fourniture> {
+
+    @Query("SELECT f FROM Fourniture f WHERE f.categorie = :categorie")
+    public List<Fourniture> findByCategorie(@Param("categorie") Categorie categorie);
 
     @Query("SELECT f FROM Fourniture f WHERE "
             + "f.reference LIKE :reference AND "

@@ -47,7 +47,7 @@ public class Lot extends EntityObject {
     private String etat;
 
     @ManyToOne
-    private Entree entrees;
+    private Entree entree;
 
     @ManyToOne
     private Fourniture fourniture;
@@ -130,12 +130,12 @@ public class Lot extends EntityObject {
         this.etat = etat;
     }
 
-    public Entree getEntrees() {
-        return entrees;
+    public Entree getEntree() {
+        return entree;
     }
 
-    public void setEntrees(Entree entrees) {
-        this.entrees = entrees;
+    public void setEntree(Entree entree) {
+        this.entree = entree;
     }
 
 }

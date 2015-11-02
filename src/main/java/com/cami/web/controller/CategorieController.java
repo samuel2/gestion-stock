@@ -7,14 +7,17 @@ package com.cami.web.controller;
 
 import com.cami.persistence.model.Categorie;
 import com.cami.persistence.service.ICategorieService;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
  *
@@ -44,7 +47,7 @@ public class CategorieController {
     @RequestMapping(value = "/{id}/delete", method = RequestMethod.POST)
     public String deleteAction(@PathVariable("id") final Long id, final ModelMap model) {
         Categorie cat = iCategorieService.findOne(id);
-        iCategorieService.delete(cat);
+        iCategorieService.disableEntity(cat);
         return "redirect:/categorie/";
     }
 
@@ -71,5 +74,32 @@ public class CategorieController {
         model.addAttribute("size", size);
         model.addAttribute("categories", resultPage.getContent());
         return "categorie/index";
+    }
+
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    public String createAction(@Valid final Categorie categorie, final ModelMap model,
+            final BindingResult result, final RedirectAttributes redirectAttributes) {
+
+        if (result.hasErrors()) {
+            model.addAttribute("error", "error");
+            model.addAttribute("categorie", categorie);
+            return "categorie/new";
+        } else {
+            iCategorieService.create(categorie);
+            return "redirect:/categorie/" + categorie.getId() + "/show";
+        }
+    }
+
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    public String updateAction(@Valid final Categorie categorie, final ModelMap model,
+            final BindingResult result, final RedirectAttributes redirectAttributes) {
+
+        if (result.hasErrors()) {
+            model.addAttribute("error", "error");
+            return "categorie/edit";
+        } else {
+            iCategorieService.update(categorie);
+            return "redirect:/categorie/" + categorie.getId() + "/show";
+        }
     }
 }

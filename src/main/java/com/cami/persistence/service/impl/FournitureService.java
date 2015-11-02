@@ -7,9 +7,11 @@ package com.cami.persistence.service.impl;
 
 import com.cami.persistence.dao.ICategorieDao;
 import com.cami.persistence.dao.IFournitureDao;
+import com.cami.persistence.model.Categorie;
 import com.cami.persistence.model.Fourniture;
 import com.cami.persistence.service.IFournitureService;
 import com.cami.persistence.service.common.AbstractService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -74,6 +76,11 @@ public class FournitureService extends AbstractService<Fourniture> implements IF
     @Override
     public Page<Fourniture> findPaginated(String reference, String designation, int quantite, int seuil, boolean deleted, int nombrePage, Integer size) {
         return iFournitureDao.searchFournitures('%' + reference + '%', '%' + designation + '%', '%' + quantite + '%', '%' + seuil + '%', deleted, new PageRequest(nombrePage, size));
+    }
+
+    @Override
+    public List<Fourniture> findByCategorie(Categorie categorie) {
+        return iFournitureDao.findByCategorie(categorie);
     }
 
 }
