@@ -12,7 +12,7 @@
         <div class="row">
             <div class="col-md-9">
                 <div class="row">
-                    Liste des Agences
+                    <spring:message code="agence.list" />
                     <hr/>
                 </div>
                 <div class="dropdown pull-right ">
@@ -33,10 +33,10 @@
                 <table class="table table-condensed table-hover table-bordered">
                     <thead class="text-center btn-primary">
                         <tr>
-                            <th> <span class="btn"> Code </span> </th>
-                            <th> <span class="btn"> Intitule </span> </th>
-                            <th> <span class="btn"> Region </span> </th>
-                            <th> <span class="btn"> Actions </span> </th>
+                            <th> <span class="btn"> <spring:message code="agence.code" /> </span> </th>
+                            <th> <span class="btn"> <spring:message code="agence.intitule" /> </span> </th>
+                            <th> <span class="btn"> <spring:message code="agence.region" /> </span> </th>
+                            <th> <span class="btn"> <spring:message code="action.titre" /> </span> </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -46,7 +46,7 @@
                         <c:if test="${agences.size() eq 0}">
                             <tr>
                                 <td class="text-center label-danger" colspan="4">
-                                    Liste vide.
+                                    <spring:message code="empty.data" />
                                 </td>
                             </tr>
                         </tbody>

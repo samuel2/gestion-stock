@@ -24,7 +24,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
  * @author samuel   < smlfolong@gmail.com >
  */
 @Controller
-@RequestMapping("/agence")
+@RequestMapping(value = "/agence")
 public class AgenceController {
 
     @Autowired
@@ -80,10 +80,23 @@ public class AgenceController {
             final ModelMap model, final RedirectAttributes redirectAttributes) {
 
         if (result.hasErrors()) {
+            System.out.println("Agence controlleur error");
+            System.out.println("Agence controlleur error");
+            System.out.println("Agence controlleur error");
+            System.out.println("Agence controlleur error");
+            System.out.println("Agence controlleur error");
             model.addAttribute("error", "error");
             model.addAttribute("agence", agence);
             return "agence/new";
         } else {
+            System.out.println("Agence controlleur create");
+            System.out.println("Agence controlleur create");
+            System.out.println("Agence controlleur create");
+            System.out.println("Agence controlleur create");
+            System.out.println("Agence controlleur create");
+            System.out.println("Agence controlleur create");
+            System.out.println("Agence controlleur create");
+            redirectAttributes.addFlashAttribute("info", "alert.success.new");
             iAgenceService.create(agence);
             return "redirect:/agence/" + agence.getId() + "/show";
         }

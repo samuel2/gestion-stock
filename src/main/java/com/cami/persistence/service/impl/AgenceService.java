@@ -36,6 +36,12 @@ public class AgenceService extends AbstractService<Agence> implements IAgenceSer
 
     @Override
     public Agence create(Agence entity) {
+        System.out.println("Agence service create");
+        System.out.println("Agence service create");
+        System.out.println("Agence service create");
+        System.out.println("Agence service create");
+        System.out.println("Agence service create");
+        System.out.println("Agence service create");
         return iAgenceDao.save(entity);
     }
 

@@ -2,51 +2,71 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Gestion-Stock</title>
-    </head>
-    <body>
 
-        <h3>New Agence</h3>
+<tiles:insertDefinition name="layout">
+    <tiles:putAttribute name="body">
+        <div class="row">
+            <div class="col-md-12">
+                <h3>
+                    <spring:message code="agence.nouveau" />
+               	</h3>
+                <hr/>
+            </div>
+        </div>
 
-        <hr/>
+        <spring:url value="/agence/create" var="save" htmlEscape="true" />
 
-        <spring:url value="/agence/create" var="save" />
-        <spring:url value="/agence/" var="agences" />
-        <spring:url value="/" var="accueil" />
 
-        <form:form method="post" commandName="agence" action="${save}" htmlEscape="true" >
-            <div>
-                <label for="code">Code</label>
-                <form:input id="code" path="code" />
-                <form:errors path="code" />
-            </div><br/>
+        <form:form method="post" commandName="agence" action="${save}" >
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <form:label for="code" path="">
+                            <spring:message code="agence.code" />
+                        </form:label>
+                        <form:input id="code" path="code" cssClass="form-control input-sm" />
+                        <form:errors path="code" />
+                    </div>
+                </div>
 
-            <div>
-                <label for="intitule">Intitule</label>
-                <form:input id="intitule" path="intitule" />
-                <form:errors path="intitule" />
-            </div><br/>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <form:label for="intitule" path="">
+                            <spring:message code="agence.intitule" />
+                        </form:label>
+                        <form:input id="intitule" path="intitule" cssClass="form-control input-sm" />
+                        <form:errors path="intitule" />
+                    </div>
+                </div>
 
-            <div>
-                <label for="region">Region</label>
-                <form:input id="region" path="region" />
-                <form:errors path="region" />
-            </div><br/>
-
-            <div>
-                <input type="submit" value="Save" />
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <form:label for="region" path="">
+                            <spring:message code="agence.region" />
+                        </form:label>
+                        <form:input id="region" path="region" cssClass="form-control input-sm   " />
+                        <form:errors path="region" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <hr/>
+                    <button type="submit" class="btn btn-sm btn-danger" >
+                        <span class="glyphicon glyphicon-save"></span>
+                        <spring:message code="action.enregistrer" />
+                    </button>
+                    <spring:url value="/agence/" htmlEscape="true"
+                                var="agence_home" />
+                    <a href="${agence_home}" class="btn btn-sm btn-default">
+                        <span class="glyphicon glyphicon-list"></span>
+                        <spring:message code="agence.list" />
+                    </a>
+                </div>
             </div>
         </form:form>
 
-        <hr />
-
-        <a href="${accueil}">Accueil</a> &nbsp; &nbsp;
-        <a href="${agences}">Liste des agences</a>
-
-    </body>
-</html>
+    </tiles:putAttribute>
+</tiles:insertDefinition>

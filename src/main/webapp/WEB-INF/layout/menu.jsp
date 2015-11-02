@@ -35,8 +35,7 @@
                                 class="list-group-item active"
                             </c:if>
                             href="<spring:url  value="/agence/" />">
-                            Les agences
-                            <%--<spring:message code="menu.materiel" />--%>
+                            <spring:message code="menu.agence" />
                         </a>
                     </li>
                     <li>
@@ -45,8 +44,7 @@
                                 class="list-group-item active"
                             </c:if>
                             href="<spring:url value="/service/"/>">
-                            Les services
-                            <%--<spring:message code="menu.filiale" />--%>
+                            <spring:message code="menu.service" />
                         </a>
                     </li>
                     <li>
@@ -55,8 +53,7 @@
                                 class="list-group-item active"
                             </c:if>
                             href="<spring:url value="/categorie/" />">
-                            Les categories
-                            <%--<spring:message code="menu.typeCaution" />--%>
+                            <spring:message code="menu.categorie" />
                         </a>
                     </li>
 
